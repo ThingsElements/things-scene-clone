@@ -73,6 +73,15 @@
             lineWidth: 1
           }, {
             type: 'rect',
+            id: 'outline-inner',
+            top: 120,
+            left: 120,
+            width:160,
+            height: 160,
+            strokeStyle: 'navy',
+            lineWidth: 1
+          }, {
+            type: 'rect',
             id: 'target',
             top: 10,
             left: 10,
@@ -91,6 +100,25 @@
               }
             }
           }, {
+            type: 'ellipse',
+            id: 'target-ellipse',
+            cx: 10,
+            cy: 10,
+            rx: 10,
+            ry: 10,
+            hidden: true,
+            strokeStyle: 'red',
+            lineWidth: 1,
+            fillStyle: 'white',
+            animation: {
+              oncreate: {
+                type: 'outline',
+                rideOn: 'outline-inner',
+                duration: 5000,
+                repeat: false
+              }
+            }
+          }, {
             type: 'clone',
             top: 30,
             left: 10,
@@ -102,6 +130,20 @@
             target: 'target',
             duration: 500,
             targetRetension: 10000,
+            autostart: true,
+            repeat: true
+          }, {
+            type: 'clone',
+            top: 30,
+            left: 10,
+            width: 10,
+            height: 10,
+            strokeStyle: 'navy',
+            fillStyle: 'orange',
+            lineWidth: 1,
+            target: 'target-ellipse',
+            duration: 500,
+            targetRetension: 5000,
             autostart: true,
             repeat: true
           }]
