@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "serve": "watchify src/*.js -o things-scene-clone.js src/index.js & polyserve",
+    "serve": "watchify src/*.js -o things-scene-clone.js src/index.js & polymer serve",
     "test": "./node_modules/.bin/mocha --require should --compilers js:babel-core/register test/**/test-*.js",
     "build": "browserify src/index.js -o things-scene-clone.js && uglifyjs things-scene-clone.js -o things-scene-clone-min.js"
   },

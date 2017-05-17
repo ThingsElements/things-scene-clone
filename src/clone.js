@@ -50,9 +50,7 @@ function clone(cloner, target, targetRetension) {
   var index = targetComponent.parent.indexOf(targetComponent)
   targetComponent.parent.insertComponentAt(component, index + 1)
 
-  component.hidden = false;
-  // component.started = true;
-  // component._animation('oncreate').started = true;
+  component.started = true;
 
   return component;
 }
@@ -68,12 +66,10 @@ export default class Clone extends RectPath(Shape) {
   }
 
   dispose() {
-    clearTimeout(this._timeout);
-    super.dispose();
-  }
+    this.started = false;
+    self._timeout && clearTimeout(self._timeout);
 
-  get hidden() {
-    return true;
+    super.dispose();
   }
 
   _draw(ctx) {
@@ -82,12 +78,23 @@ export default class Clone extends RectPath(Shape) {
       left,
       top,
       width,
-      height
+      height,
+      fillStyle,
+      strokeStyle
     } = this.bounds;
 
     ctx.beginPath();
 
-    ctx.rect(left, top, width, height);
+    ctx.fillStyle = fillStyle;
+    ctx.strokeStyle = strokeStyle;
+
+    ctx.rect(left, top, width * 0.8, height * 0.8);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+
+    ctx.rect(left + width * 0.2, top + height * 0.2, width * 0.8, height * 0.8);
   }
 
   get nature(){
