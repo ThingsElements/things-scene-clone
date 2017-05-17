@@ -39,20 +39,18 @@ function clone(cloner, target, targetRetension) {
     return
 
   var clone = Object.assign(targetComponent.hierarchy, {
-    templatePrefix: ''
+    templatePrefix: '',
+    id: ''
   })
-  delete clone.id;
-  delete clone.templatePrefix;
+
   if(targetRetension)
     clone.retension = targetRetension;
 
   var component = Model.compile(clone, cloner.app)
-  var index = cloner.parent.indexOf(component + 1)
-  targetComponent.parent.insertComponentAt(component, index)
+  var index = targetComponent.parent.indexOf(targetComponent)
+  targetComponent.parent.insertComponentAt(component, index + 1)
 
-  setTimeout(() => {
-    component.hidden = false;
-  }, 1)
+  component.hidden = false;
   // component.started = true;
   // component._animation('oncreate').started = true;
 
@@ -69,8 +67,9 @@ export default class Clone extends RectPath(Shape) {
     }, 500)
   }
 
-  disposed() {
-    this
+  dispose() {
+    clearTimeout(this._timeout);
+    super.dispose();
   }
 
   get hidden() {
@@ -127,7 +126,7 @@ export default class Clone extends RectPath(Shape) {
           return
         }
 
-        setTimeout(() => {
+        self._timeout = setTimeout(() => {
           requestAnimationFrame(_)
         }, duration)
       }
