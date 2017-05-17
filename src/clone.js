@@ -47,7 +47,7 @@ function clone(cloner, target, targetRetension) {
     clone.retension = targetRetension;
 
   var component = Model.compile(clone, cloner.app)
-  var index = cloner.parent.indexOf(component)
+  var index = cloner.parent.indexOf(component + 1)
   targetComponent.parent.insertComponentAt(component, index)
 
   setTimeout(() => {

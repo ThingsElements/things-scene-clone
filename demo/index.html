@@ -53,9 +53,25 @@
         </fieldset>
       </things-scene-properties>
 
+      <input type="button" value="start" onclick="start();"></input>
+      <input type="button" value="stop" onclick="stop();"></input>
     </template>
 
     <script>
+      function start() {
+        var app = document.querySelector('#app')
+        app.$.scene.findAll('clone').forEach(function(clone) {
+          clone.started = true;
+        })
+      }
+
+      function stop() {
+        var app = document.querySelector('#app')
+        app.$.scene.findAll('clone').forEach(function(clone) {
+          clone.started = false;
+        })
+      }
+
       window.addEventListener('WebComponentsReady', function(e) {
         var app = document.querySelector('#app')
 
