@@ -13,12 +13,12 @@ const NATURE = {
     name: 'target',
     property: 'target'
   },{
-    type: 'boolean',
+    type: 'checkbox',
     label: 'repeat',
     name: 'repeat',
     property: 'repeat'
   },{
-    type: 'boolean',
+    type: 'checkbox',
     label: 'autostart',
     name: 'autostart',
     property: 'autostart'
@@ -77,6 +77,20 @@ export default class Clone extends RectPath(Shape) {
     return true;
   }
 
+  _draw(ctx) {
+
+    var {
+      left,
+      top,
+      width,
+      height
+    } = this.bounds;
+
+    ctx.beginPath();
+
+    ctx.rect(left, top, width, height);
+  }
+
   get nature(){
     return NATURE;
   }
@@ -91,7 +105,7 @@ export default class Clone extends RectPath(Shape) {
 
     this._started = started;
 
-    if(!!this._started) {
+    if(!!this._started && this.app.isViewMode) {
       var {
         repeat,
         duration,
