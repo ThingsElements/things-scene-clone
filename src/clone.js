@@ -24,15 +24,15 @@ const NATURE = {
     property: 'autostart'
   },{
     type: 'number',
-    label: 'targetRetension',
-    name: 'targetRetension',
-    property: 'targetRetension'
+    label: 'targetRetention',
+    name: 'targetRetention',
+    property: 'targetRetention'
   }]
 }
 
 var { RectPath, Shape, Model } = scene
 
-function clone(cloner, target, targetRetension) {
+function clone(cloner, target, targetRetention) {
 
   var targetComponent = cloner.root.findById(target);
   if(!targetComponent)
@@ -43,8 +43,8 @@ function clone(cloner, target, targetRetension) {
     id: ''
   })
 
-  if(targetRetension)
-    clone.retension = targetRetension;
+  if(targetRetention)
+    clone.retention = targetRetention;
 
   var component = Model.compile(clone, cloner.app)
   var index = targetComponent.parent.indexOf(targetComponent)
@@ -116,7 +116,7 @@ export default class Clone extends RectPath(Shape) {
         repeat,
         duration,
         target,
-        targetRetension
+        targetRetention
       } = this.model;
 
       if(!target)
@@ -128,7 +128,7 @@ export default class Clone extends RectPath(Shape) {
       let self = this;
 
       function _() {
-        if(!self._started || !clone(self, target, targetRetension) || !duration || !repeat) {
+        if(!self._started || !clone(self, target, targetRetention) || !duration || !repeat) {
           self._started = false;
           return
         }
