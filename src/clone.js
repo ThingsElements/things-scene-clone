@@ -78,15 +78,13 @@ export default class Clone extends RectPath(Shape) {
       left,
       top,
       width,
-      height,
-      fillStyle,
-      strokeStyle
+      height
     } = this.bounds;
 
     ctx.beginPath();
 
-    ctx.fillStyle = fillStyle;
-    ctx.strokeStyle = strokeStyle;
+    ctx.fillStyle = 'black';
+    ctx.strokeStyle = 'black';
 
     ctx.rect(left, top, width * 0.8, height * 0.8);
     ctx.fill();
