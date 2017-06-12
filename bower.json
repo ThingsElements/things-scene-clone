@@ -26,7 +26,6 @@
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
     "web-component-tester": "^4.0.0",
     "things-scene-viewer": "ThingsElements/things-scene-viewer",
-    "things-scene-modeler": "ThingsElements/things-scene-modeler",
     "things-designer-elements": "ThingsElements/things-designer-elements"
   }
 }
