@@ -104,10 +104,11 @@ export default class Clone extends RectPath(Shape) {
   }
 
   set started(started) {
-    if(this.started === !!started)
+
+    if(!!this.started === !!started)
       return;
 
-    this._started = started;
+    this._started = !!started;
 
     if(!!this._started && this.app.isViewMode) {
       var {
