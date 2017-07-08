@@ -175,6 +175,44 @@ Copyright © 2017 HatioLab Inc. All rights reserved.
               }
             }
           }, {
+            type: 'rect',
+            id: 'target-rect-navy',
+            templatePrefix: 'QQ',
+            left: -20,
+            top: -20,
+            rotation: 0,
+            width: 20,
+            height: 20,
+            strokeStyle: 'black',
+            fillStyle: 'navy',
+            animation: {
+              oncreate: {
+                type: 'outline',
+                rideOn: 'guider2',
+                duration: 4000,
+                repeat: false
+              }
+            }
+          }, {
+            type: 'rect',
+            id: 'target-rect-red',
+            templatePrefix: 'ZZ',
+            left: -20,
+            top: -20,
+            rotation: 0,
+            width: 20,
+            height: 20,
+            strokeStyle: 'black',
+            fillStyle: 'red',
+            animation: {
+              oncreate: {
+                type: 'outline',
+                rideOn: 'guider2',
+                duration: 4000,
+                repeat: false
+              }
+            }
+          }, {
             type: 'clone',
             top: 30,
             left: 10,
@@ -185,6 +223,140 @@ Copyright © 2017 HatioLab Inc. All rights reserved.
             lineWidth: 1,
             target: 'target-rect',
             duration: 500,
+            targetRetention: 4000,
+            autostart: true,
+            repeat: true
+          }, {
+            type: 'clone',
+            top: 50,
+            left: 10,
+            width: 10,
+            height: 10,
+            strokeStyle: 'navy',
+            fillStyle: 'orange',
+            lineWidth: 1,
+            target: 'target-rect-navy',
+            duration: 770,
+            targetRetention: 4000,
+            autostart: true,
+            repeat: true
+          }, {
+            type: 'clone',
+            top: 70,
+            left: 10,
+            width: 10,
+            height: 10,
+            strokeStyle: 'navy',
+            fillStyle: 'orange',
+            lineWidth: 1,
+            target: 'target-rect-red',
+            duration: 660,
+            targetRetention: 4000,
+            autostart: true,
+            repeat: true
+          }, {
+            type: 'polyline',
+            id: 'guider3',
+            path: [{x:150, y:500}, {x:200, y:600}, {x:350, y:750}, {x:500, y:600}, {x:700, y:750}, {x:900, y:530}],
+            rotation: 0,
+            strokeStyle: '#000000',
+            lineWidth: 1
+          }, {
+            type: 'rect',
+            id: 'target-rect-2',
+            templatePrefix: 'AA',
+            left: -20,
+            top: -20,
+            rotation: 0,
+            width: 20,
+            height: 20,
+            strokeStyle: 'black',
+            fillStyle: 'yellow',
+            animation: {
+              oncreate: {
+                type: 'outline',
+                rideOn: 'guider3',
+                duration: 4000,
+                repeat: false
+              }
+            }
+          }, {
+            type: 'rect',
+            id: 'target-rect-navy-2',
+            templatePrefix: 'BB',
+            left: -20,
+            top: -20,
+            rotation: 0,
+            width: 20,
+            height: 20,
+            strokeStyle: 'black',
+            fillStyle: 'navy',
+            animation: {
+              oncreate: {
+                type: 'outline',
+                rideOn: 'guider3',
+                duration: 4000,
+                repeat: false
+              }
+            }
+          }, {
+            type: 'rect',
+            id: 'target-rect-red-2',
+            templatePrefix: 'CC',
+            left: -20,
+            top: -20,
+            rotation: 0,
+            width: 20,
+            height: 20,
+            strokeStyle: 'black',
+            fillStyle: 'red',
+            animation: {
+              oncreate: {
+                type: 'outline',
+                rideOn: 'guider3',
+                duration: 4000,
+                repeat: false
+              }
+            }
+          }, {
+            type: 'clone',
+            top: 90,
+            left: 10,
+            width: 10,
+            height: 10,
+            strokeStyle: 'navy',
+            fillStyle: 'orange',
+            lineWidth: 1,
+            target: 'target-rect-2',
+            duration: 500,
+            targetRetention: 4000,
+            autostart: true,
+            repeat: true
+          }, {
+            type: 'clone',
+            top: 110,
+            left: 10,
+            width: 10,
+            height: 10,
+            strokeStyle: 'navy',
+            fillStyle: 'orange',
+            lineWidth: 1,
+            target: 'target-rect-navy-2',
+            duration: 770,
+            targetRetention: 4000,
+            autostart: true,
+            repeat: true
+          }, {
+            type: 'clone',
+            top: 130,
+            left: 10,
+            width: 10,
+            height: 10,
+            strokeStyle: 'navy',
+            fillStyle: 'orange',
+            lineWidth: 1,
+            target: 'target-rect-red-2',
+            duration: 550,
             targetRetention: 4000,
             autostart: true,
             repeat: true
