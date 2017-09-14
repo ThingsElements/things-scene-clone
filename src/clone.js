@@ -53,8 +53,6 @@ function clone(cloner, target, targetRetention) {
   var index = targetComponent.parent.indexOf(targetComponent)
   targetComponent.parent.insertComponentAt(component, index + 1)
 
-  component.started = true;
-
   return component;
 }
 

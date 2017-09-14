@@ -1,0 +1,185 @@
+<!--
+@license
+Copyright © 2017 HatioLab Inc. All rights reserved.
+-->
+<!doctype html>
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>clone Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+
+    <link rel="import" href="../../things-scene-viewer/things-scene-viewer.html">
+    <link rel="import" href="../../things-scene-viewer/things-scene-layer.html">
+    <link rel="import" href="../../things-scene-viewer/things-scene-handler.html">
+
+    <link rel="import" href="../../things-designer-elements/things-editor-color.html">
+    <link rel="import" href="../../things-designer-elements/things-editor-color-stops.html">
+    <link rel="import" href="../../things-scene-modeler/things-scene-properties.html">
+
+    <link rel="import" href="./things-scene-clone.html">
+
+    <style is="custom-style">
+
+    things-scene-viewer {
+      display: block;
+      width: 640px;
+      height: 480px;
+    }
+    </style>
+  </head>
+  <body unresolved>
+
+    <template is="dom-bind" id="app">
+      <p>An example of <code>&lt;clone&gt;</code>:</p>
+
+      <things-scene-viewer id='scene'
+                           scene='{{scene}}'
+                           selected='{{selected}}'
+                           model='[[model]]'
+                           mode="0">
+        <!-- <things-scene-layer type="selection-layer"></things-scene-layer>
+        <things-scene-layer type="modeling-layer"></things-scene-layer>
+        <things-scene-handler type="text-editor"></things-scene-handler>
+        <things-scene-handler type="move-handler"></things-scene-handler> -->
+      </things-scene-viewer>
+
+      <things-scene-properties scene="[[scene]]"
+                               selected="[[selected]]"
+                               model="{{target}}"
+                               bounds="{{bounds}}">
+        <fieldset class="column-double">
+          <legend>clone style</legend>
+          <label>value</label>
+          <input type="number" value-as-number="{{target.value::change}}" min="0" max="100" step="1"/>
+        </fieldset>
+      </things-scene-properties>
+
+      <input type="button" value="start" onclick="start();"></input>
+      <input type="button" value="stop" onclick="stop();"></input>
+    </template>
+
+    <script>
+      /*
+      * Copyright © HatioLab Inc. All rights reserved.
+      */
+      const CANVAS_SIZE = {
+        width: 1920,
+        height: 1080
+      }
+
+      const FIRST_BOX_SIZE = {
+        width: 200,
+        height: 200
+      }
+
+      const CENTER = {
+        x: CANVAS_SIZE.width / 2,
+        y: CANVAS_SIZE.height / 2
+      }
+
+      function getRectModel(index) {
+        var boxWidth = Math.floor(FIRST_BOX_SIZE.width * (1 + index * 0.1));
+        var boxHeight = Math.floor(FIRST_BOX_SIZE.height * (1 + index * 0.1));
+        var left = Math.floor(CENTER.x - boxWidth / 2);
+        var top = Math.floor(CENTER.y - boxHeight / 2);
+
+        return {
+          "type": "rect",
+          "id": "outline-" + (index + 1),
+          "top": top,
+          "left": left,
+          "width": boxWidth,
+          "height": boxHeight,
+          "strokeStyle": "red",
+          "lineWidth": 1
+        }
+      }
+
+      function getTemplateRect(index) {
+        return {
+          "type": "rect",
+          "id": "template-rect-" + (index + 1),
+          "templatePrefix": "RECT" + (index + 1) + "-",
+          "top": -10,
+          "left": -10,
+          "width": 10,
+          "height": 10,
+          "strokeStyle": "black",
+          "lineWidth": 1,
+          "fillStyle": "white",
+          "animation": {
+            "oncreate": {
+              "type": "outline",
+              "rideOn": "outline-" + (index + 1),
+              "duration": 10000,
+              "repeat": true
+            }
+          }
+        }
+      }
+
+      function getCloneModel(index) {
+        return {
+          "type": "clone",
+          "top": -10,
+          "left": -10,
+          "width": 10,
+          "height": 10,
+          "strokeStyle": "red",
+          "fillStyle": "yellow",
+          "lineWidth": 1,
+          "target": "template-rect-" + (index + 1),
+          "duration": 500,
+          "targetRetention": 10000,
+          "autostart": true,
+          "repeat": true
+        }
+      }
+
+      function getComponentModel() {
+        var components = [];
+        for (var i = 0; i < 30; i++) {
+          components.push(getRectModel(i))
+          components.push(getTemplateRect(i))
+          components.push(getCloneModel(i))
+        }
+
+        return components;
+      }
+
+      var model = {
+        "width": CANVAS_SIZE.width,
+        "height": CANVAS_SIZE.height,
+        "components": getComponentModel()
+      };
+
+      function dispose() {
+        app.dispose();
+      }
+
+      function change() {
+      }
+
+      function fit() {
+        app.fit('both')
+      }
+
+      function fullscreen() {
+        app.fullscreen('both')
+      }
+
+      window.addEventListener('WebComponentsReady', function(e) {
+        var app = document.querySelector('#app')
+
+        app.model = JSON.parse(JSON.stringify(model))
+
+        setTimeout( () => {
+          app.scene.fit('both')
+        }, 10)
+      });
+    </script>
+  </body>
+</html>
