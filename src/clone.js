@@ -68,8 +68,6 @@ export default class Clone extends RectPath(Shape) {
 
   dispose() {
     this.started = false;
-    self._timeout && clearTimeout(self._timeout);
-
     super.dispose();
   }
 
@@ -106,12 +104,15 @@ export default class Clone extends RectPath(Shape) {
 
   set started(started) {
 
-    if(!!this.started === !!started)
+    if(!!this.started == !!started)
       return;
 
     this._started = !!started;
 
-    if(!!this._started && this.app.isViewMode) {
+    if(!this.app.isViewMode)
+      return
+
+    if(this._started) {
       var {
         repeat,
         duration,
@@ -124,6 +125,8 @@ export default class Clone extends RectPath(Shape) {
 
       if(duration < 500)
         duration = 500
+
+      console.log('duration', duration)
 
       let self = this;
 
@@ -139,6 +142,11 @@ export default class Clone extends RectPath(Shape) {
       }
 
       requestAnimationFrame(_)
+    } else {
+      if(this._timeout) {
+        clearTimeout(this._timeout)
+        this._timeout = 0
+      }
     }
   }
 }
