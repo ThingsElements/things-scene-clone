@@ -126,8 +126,6 @@ export default class Clone extends RectPath(Shape) {
       if(duration < 500)
         duration = 500
 
-      console.log('duration', duration)
-
       let self = this;
 
       function _() {
