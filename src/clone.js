@@ -1,6 +1,8 @@
 /*
- * Copyright © HatioLab Inc. All rights reserved.
- */
+* Copyright © HatioLab Inc. All rights reserved.
+*/
+import { Component, RectPath, Shape, Model } from '@hatiolab/things-scene'
+
 const NATURE = {
   mutable: false,
   resizable: true,
@@ -32,8 +34,6 @@ const NATURE = {
     property: 'targetRetention'
   }]
 }
-
-var { RectPath, Shape, Model } = scene
 
 function clone(cloner, target, targetRetention) {
 
@@ -149,4 +149,4 @@ export default class Clone extends RectPath(Shape) {
   }
 }
 
-scene.Component.register('clone', Clone);
+Component.register('clone', Clone);

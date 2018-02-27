@@ -1,4 +1,13 @@
-bower_components
-node_modules
+DEPLOYMENT.md
+DEVELOPMENT.md
+dist/
 npm-debug.log
-things-scene-clone.js
+node_modules
+bower_components
+.babelrc
+.editorconfig
+.gitignore
+.git
+boards
+things-scene-chartjs-min.js
+things-scene-chartjs.js
