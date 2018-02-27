@@ -9,5 +9,5 @@ bower_components
 .gitignore
 .git
 boards
-things-scene-chartjs-min.js
-things-scene-chartjs.js
+things-scene-clone-min.js
+things-scene-clone.js
