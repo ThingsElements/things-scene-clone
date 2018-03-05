@@ -1,5 +1,10 @@
+import icon from '../assets/clone.png';
+
 export default [{
   type: 'clone',
+  description: 'component cloner',
+  group: 'etc',
+  icon,
   model: {
     type: 'clone',
     top: 350,
@@ -10,16 +15,4 @@ export default [{
     lineWidth: 1,
     lineStyle: '#999'
   }
-}].map(t => {
-  return {
-    name: t.type,
-    /* 다국어 키 표현을 어떻게.. */
-    description: '...',
-    /* 다국어 키 표현을 어떻게.. */
-    group: 'warehouse',
-    /* line|shape|textAndMedia|chartAndGauge|table|container|dataSource|IoT|3D|warehouse|form|etc */
-    icon: '../',
-    /* 또는, Object */
-    template: t
-  }
-})
+}]
