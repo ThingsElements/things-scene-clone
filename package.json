@@ -1,9 +1,9 @@
 {
-  "name": "@things-elements/things-scene-clone",
-  "version": "2.0.8",
+  "name": "@things-scene/clone",
+  "version": "2.1.0",
   "description": "An element providing a starting point for your own reusable Polymer elements.",
   "main": "src/index.js",
-  "things-shell": true,
+  "things-scene": true,
   "directories": {
     "test": "test"
   },
@@ -28,7 +28,7 @@
     ]
   },
   "devDependencies": {
-    "@hatiolab/things-shell": "^0.2.20"
+    "@hatiolab/things-shell": "^0.3.0"
   },
   "dependencies": {
     "@hatiolab/things-scene": "^2.2.36"
