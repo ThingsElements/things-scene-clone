@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/clone",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "description": "An element providing a starting point for your own reusable Polymer elements.",
   "main": "src/index.js",
   "things-scene": true,
@@ -10,7 +10,7 @@
   "scripts": {
     "serve": "things-shell",
     "serve:dev": "things-shell-dev",
-    "build:client": "webpack --config node_modules/@hatiolab/things-shell/webpack.config.dev.js && webpack",
+    "build:client": "webpack --config node_modules/@hatiolab/things-shell/webpack.config.js",
     "build": "webpack",
     "prepublish": "webpack"
   },
