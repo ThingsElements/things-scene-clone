@@ -3,7 +3,6 @@
   "version": "2.3.5",
   "description": "An element providing a starting point for your own reusable Polymer elements.",
   "main": "src/index.js",
-  "module": "dist/things-scene-clone.mjs",
   "jsnext:main": "dist/things-scene-clone.mjs",
   "things-scene": true,
   "directories": {
