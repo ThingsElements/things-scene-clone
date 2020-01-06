@@ -1,6 +1,6 @@
 {
   "name": "@things-scene/clone",
-  "version": "2.3.6",
+  "version": "2.3.7",
   "description": "An element providing a starting point for your own reusable Polymer elements.",
   "main": "src/index.js",
   "jsnext:main": "dist/things-scene-clone.mjs",
